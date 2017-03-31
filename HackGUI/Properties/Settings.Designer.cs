@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HackCompiler.Properties
+namespace HackGUI.Properties
 {
 
 

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackCLI", "HackVMCompiler\HackCLI.csproj", "{5CB9FCF7-8CFF-4143-A3D4-CCD68F372490}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackGUI", "HackGUI\HackGUI.csproj", "{A7BD88F9-2563-4AB2-BBEA-B19B2B1FCB1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackCompiler", "HackCompiler\HackCompiler.csproj", "{4872A5F5-9368-4C6F-80DD-59DDBB0AB034}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CB9FCF7-8CFF-4143-A3D4-CCD68F372490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CB9FCF7-8CFF-4143-A3D4-CCD68F372490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CB9FCF7-8CFF-4143-A3D4-CCD68F372490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CB9FCF7-8CFF-4143-A3D4-CCD68F372490}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7BD88F9-2563-4AB2-BBEA-B19B2B1FCB1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7BD88F9-2563-4AB2-BBEA-B19B2B1FCB1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7BD88F9-2563-4AB2-BBEA-B19B2B1FCB1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7BD88F9-2563-4AB2-BBEA-B19B2B1FCB1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4872A5F5-9368-4C6F-80DD-59DDBB0AB034}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4872A5F5-9368-4C6F-80DD-59DDBB0AB034}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4872A5F5-9368-4C6F-80DD-59DDBB0AB034}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4872A5F5-9368-4C6F-80DD-59DDBB0AB034}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
