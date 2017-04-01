@@ -250,7 +250,7 @@ namespace HackCompiler.Hack
 
         private void TextLexer(char current, char next)
         {
-            if(Char.IsLetterOrDigit(current))
+            if(Char.IsLetterOrDigit(current) || validCharacters.Contains(current))
             {
                 Accept();
             }
@@ -262,6 +262,26 @@ namespace HackCompiler.Hack
                     m_CurrentState = State.Base;
                 }
                 else if(memorySegment.Contains(m_Data.ToString()))
+                {
+                    EmitToken(TokenType.MemorySegment);
+                    m_CurrentState = State.Base;
+                }
+                else
+                {
+                    EmitToken(TokenType.Text);
+                    m_CurrentState = State.Base;
+                }
+            }
+
+            // If we're at the end of the stream.
+            if(next == Char.MinValue)
+            {
+                if (instructions.Contains(m_Data.ToString()))
+                {
+                    EmitToken(TokenType.Instruction);
+                    m_CurrentState = State.Base;
+                }
+                else if (memorySegment.Contains(m_Data.ToString()))
                 {
                     EmitToken(TokenType.MemorySegment);
                     m_CurrentState = State.Base;
