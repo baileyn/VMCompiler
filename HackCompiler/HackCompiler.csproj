@@ -46,6 +46,7 @@
     <Compile Include="Hack\Compiler.cs" />
     <Compile Include="Hack\Insn\AddInstruction.cs" />
     <Compile Include="Hack\Insn\AndInstruction.cs" />
+    <Compile Include="Hack\Insn\CallInstruction.cs" />
     <Compile Include="Hack\Insn\EqInstruction.cs" />
     <Compile Include="Hack\Insn\FunctionInstruction.cs" />
     <Compile Include="Hack\Insn\GotoInstruction.cs" />

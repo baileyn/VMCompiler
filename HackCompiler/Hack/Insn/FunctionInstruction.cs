@@ -21,7 +21,8 @@ M=M+1
         private string m_FunctionName;
         private int m_NumArgs;
 
-        public FunctionInstruction(string className, string functionName, int numArgs)
+        public FunctionInstruction(TokenSequence sequence, string className, string functionName, int numArgs) :
+            base(sequence)
         {
             m_ClassName = className;
             m_FunctionName = functionName;
@@ -30,6 +31,8 @@ M=M+1
 
         public override string GenerateAssembly()
         {
+            m_CurrentFunctionName = m_FunctionName;
+
             StringBuilder builder = new StringBuilder();
 
             builder.Append(string.Format("({0})\n", m_FunctionName));

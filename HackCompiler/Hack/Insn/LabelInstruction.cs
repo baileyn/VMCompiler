@@ -8,12 +8,13 @@ namespace HackCompiler.Hack.Insn
 {
     public class LabelInstruction : Instruction
     {
-        private const string LabelFormat = "({0}${1})\n";
+        private const string LabelFormat = "({0})\n";
 
         private string m_ClassName;
         private string m_LabelName;
 
-        public LabelInstruction(string className, string labelName)
+        public LabelInstruction(TokenSequence sequence, string className, string labelName) :
+            base(sequence)
         {
             m_ClassName = className;
             m_LabelName = labelName;
@@ -21,7 +22,10 @@ namespace HackCompiler.Hack.Insn
 
         public override string GenerateAssembly()
         {
-            return String.Format(LabelFormat, m_ClassName, m_LabelName);
+            var functionName = m_CurrentFunctionName;
+
+            var labelName = CreateLabel(functionName, m_LabelName);
+            return String.Format(LabelFormat, labelName);
         }
     }
 }

@@ -8,18 +8,29 @@ namespace HackCLI
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        static void Main()
+        static void Main(string[] args)
         {
-            var program = new Program(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\08\FunctionCalls\SimpleFunction");
-            var compiler = new Compiler(program);
-            compiler.Compile();
-
-            foreach(var assembly in compiler.Assemblies)
+            if (args.Length != 2 || args[1] == "-h")
             {
-                assembly.Write(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\08\FunctionCalls\SimpleFunction");
+                Console.WriteLine("Usage: HackCLI <project folder that contains multiple vm files including sys.vm>");
             }
-            
-            Console.ReadLine();
+            else
+            {
+
+                var program = new Program(args[1]);
+                var compiler = new Compiler(program);
+
+                try
+                {
+                    compiler.Compile();
+                    compiler.Write();
+                }
+                catch (CompilationException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+
+            }
         }
     }
 }

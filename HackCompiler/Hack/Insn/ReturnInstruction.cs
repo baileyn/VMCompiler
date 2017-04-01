@@ -38,6 +38,12 @@ A=M
 0;JMP
 ";
 
+        public ReturnInstruction(TokenSequence sequence) :
+            base(sequence)
+        {
+
+        }
+
         private static string GenerateFrameOffset(string location, int offset, bool loadFrame = true)
         {
             StringBuilder builder = new StringBuilder();

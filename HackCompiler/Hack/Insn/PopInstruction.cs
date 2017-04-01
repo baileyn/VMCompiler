@@ -35,7 +35,8 @@ M=D
 
         private List<MemorySegment> memoryLocationPops = new List<MemorySegment> { MemorySegment.This, MemorySegment.That, MemorySegment.Argument, MemorySegment.Local };
 
-        public PopInstruction(string className, MemorySegment memorySegment, int index)
+        public PopInstruction(TokenSequence sequence, string className, MemorySegment memorySegment, int index) :
+            base(sequence)
         {
             m_ClassName = className;
             m_MemorySegment = memorySegment;

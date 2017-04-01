@@ -32,6 +32,12 @@ M=0
 M=M+1
 ";
 
+        public EqInstruction(TokenSequence sequence) :
+            base(sequence)
+        {
+
+        }
+
         public override string GenerateAssembly()
         {
             var falseLabel = CreateLabel("eq_false");

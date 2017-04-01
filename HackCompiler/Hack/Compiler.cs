@@ -26,6 +26,15 @@ namespace HackCompiler.Hack
     {
         private Program m_HackProgram;
         private List<Assembly> m_Assemblies = new List<Assembly>();
+
+        public string OutputFile
+        {
+            get
+            {
+                var fileName = Path.GetFileName(m_HackProgram.ClassPath);
+                return Path.Combine(m_HackProgram.ClassPath, fileName + ".asm");
+            }
+        }
         
         public IReadOnlyList<Assembly> Assemblies
         {
@@ -47,6 +56,30 @@ namespace HackCompiler.Hack
                 var assembly = Compile(file);
                 m_Assemblies.Add(assembly);
             }
+        }
+
+        public void Write()
+        {
+            var instruction = CallInstruction.GenerateCallInstruction("Sys.init");
+
+            StringBuilder assemblerCode = new StringBuilder();
+            // Add the bootstrap code to the beginning.
+            assemblerCode.AppendFormat(@"@256
+D=A
+@SP
+M=D
+
+{0}
+", instruction.GenerateAssembly());
+
+
+            foreach(var assembly in m_Assemblies)
+            {
+                assemblerCode.AppendLine("// Assembly for file " + assembly.ClassName + ".vm");
+                assemblerCode.AppendLine(assembly.Generate());
+            }
+
+            File.WriteAllText(OutputFile, assemblerCode.ToString());
         }
 
         public static Instruction Compile(string className, TokenSequence tokenSequence)
