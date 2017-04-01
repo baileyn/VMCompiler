@@ -63,7 +63,9 @@ namespace HackCompiler.Hack
             var memorySegment = MemorySegmentParser.Parse(tokens[1].Data);
             int index = int.Parse(tokens[2].Data);
 
-            return new PushInstruction(className, memorySegment, index);
+            var instruction = new PushInstruction(className, memorySegment, index);
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction PopCompiler(string className, TokenSequence sequence)
@@ -75,61 +77,81 @@ namespace HackCompiler.Hack
             var memorySegment = MemorySegmentParser.Parse(tokens[1].Data);
             int index = int.Parse(tokens[2].Data);
 
-            return new PopInstruction(className, memorySegment, index);
+            var instruction = new PopInstruction(className, memorySegment, index);
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction AddCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new AddInstruction();
+            var instruction = new AddInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction SubCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new SubInstruction();
+            var instruction = new SubInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction NegCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new NegInstruction();
+            var instruction = new NegInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction EqCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new EqInstruction();
+            var instruction = new EqInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction GtCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new GtInstruction();
+            var instruction = new GtInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction LtCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new LtInstruction();
+            var instruction = new LtInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction AndCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new AndInstruction();
+            var instruction = new AndInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction OrCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new OrInstruction();
+            var instruction = new OrInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction NotCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new NotInstruction();
+            var instruction = new NotInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction LabelCompiler(string className, TokenSequence sequence)
@@ -139,7 +161,9 @@ namespace HackCompiler.Hack
 
             var labelName = sequence.Tokens[1].Data;
 
-            return new LabelInstruction(className, labelName);
+            var instruction = new LabelInstruction(className, labelName);
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction GotoCompiler(string className, TokenSequence sequence)
@@ -147,7 +171,9 @@ namespace HackCompiler.Hack
             VerifySequence(sequence, TokenType.Text);
 
             var labelName = sequence.Tokens[1].Data;
-            return new GotoInstruction(className, labelName);
+            var instruction = new GotoInstruction(className, labelName);
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction IfGotoCompiler(string className, TokenSequence sequence)
@@ -155,7 +181,9 @@ namespace HackCompiler.Hack
             VerifySequence(sequence, TokenType.Text);
 
             var labelName = sequence.Tokens[1].Data;
-            return new IfGotoInstruction(className, labelName);
+            var instruction = new IfGotoInstruction(className, labelName);
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction FunctionCompiler(string className, TokenSequence sequence)
@@ -165,13 +193,17 @@ namespace HackCompiler.Hack
             var functionName = sequence.Tokens[1].Data;
             var numArgs = int.Parse(sequence.Tokens[2].Data);
 
-            return new FunctionInstruction(className, functionName, numArgs);
+            var instruction = new FunctionInstruction(className, functionName, numArgs);
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
 
         public static Instruction ReturnCompiler(string className, TokenSequence sequence)
         {
             VerifySequence(sequence);
-            return new ReturnInstruction();
+            var instruction = new ReturnInstruction();
+            instruction.TokenSequence = sequence;
+            return instruction;
         }
         #endregion
     }

@@ -53,7 +53,8 @@ namespace HackCompiler.Hack
 
             foreach (var instruction in m_Instructions)
             {
-                generatedAssembly.Append(instruction.GenerateAssembly());
+                generatedAssembly.AppendFormat("// {0}\n", instruction.Raw);
+                generatedAssembly.AppendLine(instruction.GenerateAssembly());
             }
 
             return generatedAssembly.ToString();

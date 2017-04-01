@@ -27,11 +27,40 @@ namespace HackCompiler.Hack.Insn
         public const string Goto = "goto";
         public const string Function = "function";
         public const string Return = "return";
-        
+
         protected const int PointerLocationThis = 0;
         protected const int PointerLocationThat = 1;
 
         private static Dictionary<string, int> labelUses = new Dictionary<string, int>();
+
+        public TokenSequence TokenSequence
+        {
+            get;
+            set;
+        }
+
+        public string Raw
+        {
+            get
+            {
+                if(TokenSequence == null)
+                {
+                    return "<UNRECOVERABLE>";
+                }
+                else
+                {
+                    StringBuilder builder = new StringBuilder();
+
+                    builder.Append(TokenSequence.Tokens[0].Data);
+                    foreach(var token in TokenSequence.Tokens.Skip(1))
+                    {
+                        builder.AppendFormat(" {0}", token.Data);
+                    }
+
+                    return builder.ToString();
+                }
+            }
+        }
 
         /// <summary>
         /// Generates the default assembly to push the value in register <code>D</code> onto the stack.
