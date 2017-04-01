@@ -27,6 +27,8 @@ namespace HackCompiler.Hack
             { Instruction.Label, LabelCompiler },
             { Instruction.Goto, GotoCompiler },
             { Instruction.IfGoto, IfGotoCompiler },
+            { Instruction.Function, FunctionCompiler },
+            { Instruction.Return, ReturnCompiler },
         };
 
         private static void VerifySequence(TokenSequence sequence, params TokenType[] types)
@@ -154,6 +156,22 @@ namespace HackCompiler.Hack
 
             var labelName = sequence.Tokens[1].Data;
             return new IfGotoInstruction(className, labelName);
+        }
+
+        public static Instruction FunctionCompiler(string className, TokenSequence sequence)
+        {
+            VerifySequence(sequence, TokenType.Text, TokenType.Number);
+
+            var functionName = sequence.Tokens[1].Data;
+            var numArgs = int.Parse(sequence.Tokens[2].Data);
+
+            return new FunctionInstruction(className, functionName, numArgs);
+        }
+
+        public static Instruction ReturnCompiler(string className, TokenSequence sequence)
+        {
+            VerifySequence(sequence);
+            return new ReturnInstruction();
         }
         #endregion
     }

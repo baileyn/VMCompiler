@@ -102,7 +102,7 @@ namespace HackCompiler.Hack
             }
         }
 
-        private List<char> validCharacters = new List<char> { '_', '-' };
+        private List<char> validCharacters = new List<char> { '_', '-', '.' };
 
         private List<string> instructions = new List<string> {
             "push", "pop", "add", "sub", "neg", "eq", "gt", "lt", "and",
