@@ -8,14 +8,15 @@ namespace HackCompiler.Hack.Insn
 {
     public class GotoInstruction : Instruction
     {
-        private const string GotoFormat = @"@{0}${1}
+        private const string GotoFormat = @"@{0}
 0;JMP
 ";
 
         private string m_ClassName;
         private string m_LabelName;
 
-        public GotoInstruction(string className, string labelName)
+        public GotoInstruction(TokenSequence sequence, string className, string labelName) :
+            base(sequence)
         {
             m_ClassName = className;
             m_LabelName = labelName;
@@ -23,7 +24,10 @@ namespace HackCompiler.Hack.Insn
 
         public override string GenerateAssembly()
         {
-            return String.Format(GotoFormat, m_ClassName, m_LabelName);
+            var functionName = m_CurrentFunctionName;
+
+            return String.Format(GotoFormat, 
+                CreateLabel(functionName, m_LabelName));
         }
     }
 }

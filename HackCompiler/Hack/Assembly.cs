@@ -59,13 +59,5 @@ namespace HackCompiler.Hack
 
             return generatedAssembly.ToString();
         }
-
-        public void Write(string output)
-        {
-            string outputPath = Path.Combine(output, ClassName + ".asm");
-
-            Console.WriteLine(outputPath);
-            File.WriteAllText(outputPath, Generate());
-        }
     }
 }

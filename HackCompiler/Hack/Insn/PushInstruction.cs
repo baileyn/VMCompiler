@@ -23,7 +23,8 @@ D=M
 
         private string m_ClassName;
 
-        public PushInstruction(string className, MemorySegment memorySegment, int index)
+        public PushInstruction(TokenSequence sequence, string className, MemorySegment memorySegment, int index) :
+            base(sequence)
         {
             m_ClassName = className;
             m_MemorySegment = memorySegment;

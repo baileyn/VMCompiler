@@ -8,6 +8,12 @@ namespace HackCompiler.Hack.Insn
 {
     public class OrInstruction : Instruction
     {
+        public OrInstruction(TokenSequence sequence) :
+            base(sequence)
+        {
+
+        }
+
         public override string GenerateAssembly()
         {
             return @"@SP

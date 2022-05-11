@@ -12,6 +12,14 @@ namespace HackCompiler.Hack
         private string m_ClassPath;
         private List<string> m_Files = new List<string>();
 
+        public string ClassPath
+        {
+            get
+            {
+                return m_ClassPath;
+            }
+        }
+
         public IReadOnlyList<string> Files
         {
             get

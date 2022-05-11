@@ -32,6 +32,12 @@ M=0
 M=M+1
 ";
 
+        public GtInstruction(TokenSequence sequence) :
+            base(sequence)
+        {
+
+        }
+
         public override string GenerateAssembly()
         {
             var falseLabel = CreateLabel("gt_false");

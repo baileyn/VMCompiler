@@ -27,11 +27,14 @@ namespace HackCompiler.Hack.Insn
         public const string Goto = "goto";
         public const string Function = "function";
         public const string Return = "return";
+        public const string Call = "call";
 
         protected const int PointerLocationThis = 0;
         protected const int PointerLocationThat = 1;
 
-        private static Dictionary<string, int> labelUses = new Dictionary<string, int>();
+        private static Dictionary<string, int> LabelUses = new Dictionary<string, int>();
+
+        protected static string m_CurrentFunctionName;
 
         public TokenSequence TokenSequence
         {
@@ -62,6 +65,11 @@ namespace HackCompiler.Hack.Insn
             }
         }
 
+        protected Instruction(TokenSequence sequence)
+        {
+            TokenSequence = sequence;
+        }
+
         /// <summary>
         /// Generates the default assembly to push the value in register <code>D</code> onto the stack.
         /// </summary>
@@ -85,16 +93,21 @@ D=M
 ";
         }
 
+        protected static string CreateLabel(string functionName, string labelName)
+        {
+            return String.Format("{0}${1}", functionName, labelName);
+        }
+
         protected static string CreateLabel(string labelName)
         {
             int uses;
 
-            if(!labelUses.TryGetValue(labelName, out uses))
+            if(!LabelUses.TryGetValue(labelName, out uses))
             {
                 uses = 0;
             }
 
-            labelUses[labelName] = uses + 1;
+            LabelUses[labelName] = uses + 1;
 
             return String.Format("__{0}_{1}__", labelName, uses);
         }

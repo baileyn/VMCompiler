@@ -41,12 +41,18 @@ namespace HackGUI
                 {
                     Program program = new Program(tbFilePath.Text);
                     Compiler compiler = new Compiler(program);
-                    compiler.Compile();
 
-                    foreach (var assembly in compiler.Assemblies)
+                    try
                     {
-                        assembly.Write(tbFilePath.Text);
+                        compiler.Compile();
+                        compiler.Write();
                     }
+                    catch (CompilationException compilationException)
+                    {
+                        MessageBox.Show(compilationException.Message, "Compilation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    MessageBox.Show("The compilation was a success! Output files written to:\n" + compiler.OutputFile, "Compilation Success");
                 }
                 catch (Exception ee)
                 {

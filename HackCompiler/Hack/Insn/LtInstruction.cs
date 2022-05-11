@@ -31,6 +31,11 @@ M=0
 @SP
 M=M+1
 ";
+        public LtInstruction(TokenSequence sequence) :
+            base(sequence)
+        {
+
+        }
 
         public override string GenerateAssembly()
         {

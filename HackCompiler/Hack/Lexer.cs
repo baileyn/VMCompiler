@@ -106,7 +106,8 @@ namespace HackCompiler.Hack
 
         private List<string> instructions = new List<string> {
             "push", "pop", "add", "sub", "neg", "eq", "gt", "lt", "and",
-            "or", "not", "label", "if-goto", "goto", "function", "return"
+            "or", "not", "label", "if-goto", "goto", "function", "return",
+            "call"
         };
 
         private List<string> memorySegment = new List<string> {
