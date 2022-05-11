@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using HackCompiler.Hack;
+using System;
 
-namespace HackVMCompiler
+namespace HackCLI
 {
-    static class Program
+    static class EntryPoint
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            var program = new Program(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\07\MemoryAccess\PointerTest");
+            var compiler = new Compiler(program);
+            compiler.Compile();
+
+            foreach(var assembly in compiler.Assemblies)
+            {
+                assembly.Write(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\07\MemoryAccess\PointerTest");
+            }
+            
+            Console.ReadLine();
         }
     }
 }
