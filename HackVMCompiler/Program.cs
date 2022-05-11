@@ -10,13 +10,13 @@ namespace HackCLI
         /// </summary>
         static void Main()
         {
-            var program = new Program(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\07\MemoryAccess\PointerTest");
+            var program = new Program(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\08\ProgramFlow\BasicLoop");
             var compiler = new Compiler(program);
             compiler.Compile();
 
             foreach(var assembly in compiler.Assemblies)
             {
-                assembly.Write(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\07\MemoryAccess\PointerTest");
+                assembly.Write(@"C:\Users\Nicholas Bailey\Desktop\Coding\nand2tetris\projects\08\ProgramFlow\BasicLoop");
             }
             
             Console.ReadLine();

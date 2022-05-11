@@ -37,13 +37,20 @@ namespace HackGUI
             }
             else
             {
-                Program program = new Program(tbFilePath.Text);
-                Compiler compiler = new Compiler(program);
-                compiler.Compile();
-
-                foreach(var assembly in compiler.Assemblies)
+                try
                 {
-                    assembly.Write(tbFilePath.Text);
+                    Program program = new Program(tbFilePath.Text);
+                    Compiler compiler = new Compiler(program);
+                    compiler.Compile();
+
+                    foreach (var assembly in compiler.Assemblies)
+                    {
+                        assembly.Write(tbFilePath.Text);
+                    }
+                }
+                catch (Exception ee)
+                {
+                    MessageBox.Show(ee.Message);
                 }
             }
         }

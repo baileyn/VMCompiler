@@ -47,8 +47,11 @@
     <Compile Include="Hack\Insn\AddInstruction.cs" />
     <Compile Include="Hack\Insn\AndInstruction.cs" />
     <Compile Include="Hack\Insn\EqInstruction.cs" />
+    <Compile Include="Hack\Insn\GotoInstruction.cs" />
     <Compile Include="Hack\Insn\GtInstruction.cs" />
+    <Compile Include="Hack\Insn\IfGotoInstruction.cs" />
     <Compile Include="Hack\Insn\Instruction.cs" />
+    <Compile Include="Hack\Insn\LabelInstruction.cs" />
     <Compile Include="Hack\Insn\LtInstruction.cs" />
     <Compile Include="Hack\Insn\MemorySegment.cs" />
     <Compile Include="Hack\Insn\NegInstruction.cs" />

@@ -48,6 +48,11 @@ namespace HackCompiler.Hack
                 currentSequence.AddToken(token);
             }
 
+            if(currentSequence.Tokens.Count > 0)
+            {
+                tokenSequences.Add(currentSequence);
+            }
+
             return tokenSequences;
         }
 
