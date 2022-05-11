@@ -11,6 +11,9 @@ namespace HackCompiler.Hack
         private List<Instruction> m_Instructions = new List<Instruction>();
         private string m_ClassName;
 
+        /// <summary>
+        /// The name of the class represented by this Assembly
+        /// </summary>
         public string ClassName
         {
             get

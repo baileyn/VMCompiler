@@ -47,6 +47,7 @@
     <Compile Include="Hack\Insn\AddInstruction.cs" />
     <Compile Include="Hack\Insn\AndInstruction.cs" />
     <Compile Include="Hack\Insn\EqInstruction.cs" />
+    <Compile Include="Hack\Insn\FunctionInstruction.cs" />
     <Compile Include="Hack\Insn\GotoInstruction.cs" />
     <Compile Include="Hack\Insn\GtInstruction.cs" />
     <Compile Include="Hack\Insn\IfGotoInstruction.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Hack\Insn\OrInstruction.cs" />
     <Compile Include="Hack\Insn\PopInstruction.cs" />
     <Compile Include="Hack\Insn\PushInstruction.cs" />
+    <Compile Include="Hack\Insn\ReturnInstruction.cs" />
     <Compile Include="Hack\Insn\SubInstruction.cs" />
     <Compile Include="Hack\Lexer.cs" />
     <Compile Include="Hack\Parser.cs" />
